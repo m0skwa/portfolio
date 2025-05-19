@@ -15,6 +15,7 @@ import { LuGithub } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineDiscord } from "react-icons/ai";
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/next"
 
 function useScrollAnimation() {
   useEffect(() => {
