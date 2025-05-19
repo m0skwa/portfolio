@@ -10,7 +10,6 @@ main {
     min-height: 100vh;
     height: auto;
     scroll-margin-top: 5rem;
-    text-align: center;
 
     &:nth-child(1) {
       height: 91.5vh;
@@ -123,4 +122,7 @@ main {
 }
 
 @media only screen and (max-width: 480px) {
+  .section {
+    text-align: center;
+  }
 }

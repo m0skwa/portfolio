@@ -57,7 +57,7 @@ const TerminalJsonViewer = ({ data }) => {
       boxShadow="lg"
       minHeight="400px"
       width="100%"
-      maxW="800px"
+      maxW={{ base: "90%", sm: "90%", md: "700px", lg: "800px" }}
       mx="auto"
     >
       <Text color="green.400" mb={2}>
