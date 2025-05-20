@@ -1,9 +1,9 @@
 import "./Navbar.css";
-import { Link, Button, Menu, Portal } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+import BurgerMenu from "@/components/BurgerMenu.jsx";
 
-function Navbar() {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,37 +45,7 @@ function Navbar() {
           </Link>
         </li>
       </ul>
-
-      <Menu.Root>
-        <Menu.Trigger asChild>
-          <Button variant="ghost" size="sm" className="burgerMenu">
-            <GiHamburgerMenu />
-          </Button>
-        </Menu.Trigger>
-        <Portal>
-          <Menu.Positioner>
-            <Menu.Content>
-              <Menu.Item>
-                <Link className="item" href="#about">
-                  About
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link className="item" href="#skills">
-                  Skills
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link className="item" href="#projects">
-                  Projects
-                </Link>
-              </Menu.Item>
-            </Menu.Content>
-          </Menu.Positioner>
-        </Portal>
-      </Menu.Root>
+      <BurgerMenu />
     </header>
   );
 }
-
-export default Navbar;
