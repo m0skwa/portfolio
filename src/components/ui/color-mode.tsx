@@ -8,12 +8,30 @@ import * as React from "react"
 import { LuMoon, LuSun } from "react-icons/lu"
 
 export interface ColorModeProviderProps extends ThemeProviderProps {
-  children: React.ReactNode;
+  /**
+   * Whether to enable smooth transition when changing color modes
+   * @default true
+   */
+  enableTransition?: boolean
+  /**
+   * Default color mode ("light" | "dark" | "system")
+   * @default "system"
+   */
+  defaultMode?: "light" | "dark" | "system"
 }
 
-export function ColorModeProvider(props: ColorModeProviderProps) {
+export function ColorModeProvider({
+  enableTransition = true,
+  defaultMode = "system",
+  ...props
+}: ColorModeProviderProps) {
   return (
-    <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange={!enableTransition}
+      defaultTheme={defaultMode === "system" ? undefined : defaultMode}
+      {...props}
+    />
   )
 }
 
@@ -23,22 +41,29 @@ export interface UseColorModeReturn {
   colorMode: ColorMode
   setColorMode: (colorMode: ColorMode) => void
   toggleColorMode: () => void
+  isSystem: boolean
+  modes: ColorMode[]
 }
 
 export function useColorMode(): UseColorModeReturn {
   const { resolvedTheme, setTheme, forcedTheme } = useTheme()
-  const colorMode = forcedTheme || resolvedTheme
-  const toggleColorMode = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }
+  const colorMode = (forcedTheme || resolvedTheme || "light") as ColorMode
+  const isSystem = !forcedTheme
+
+  const toggleColorMode = React.useCallback(() => {
+    setTheme(colorMode === "dark" ? "light" : "dark")
+  }, [colorMode, setTheme])
+
   return {
-    colorMode: colorMode as ColorMode,
+    colorMode,
     setColorMode: setTheme,
     toggleColorMode,
+    isSystem,
+    modes: ["light", "dark"],
   }
 }
 
-export function useColorModeValue<T>(light: T, dark: T) {
+export function useColorModeValue<T>(light: T, dark: T): T {
   const { colorMode } = useColorMode()
   return colorMode === "dark" ? dark : light
 }
@@ -48,34 +73,37 @@ export function ColorModeIcon() {
   return colorMode === "dark" ? <LuMoon /> : <LuSun />
 }
 
-interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> { }
+export interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> {
+  iconSize?: string | number
+  isLoading?: boolean
+}
 
-export const ColorModeButton = React.forwardRef<
-  HTMLButtonElement,
-  ColorModeButtonProps
->(function ColorModeButton(props, ref) {
-  const { toggleColorMode } = useColorMode()
-  return (
-    <ClientOnly fallback={<Skeleton boxSize="8" />}>
-      <IconButton
-        onClick={toggleColorMode}
-        variant="ghost"
-        aria-label="Toggle color mode"
-        size="sm"
-        ref={ref}
-        {...props}
-        css={{
-          _icon: {
-            width: "5",
-            height: "5",
-          },
-        }}
-      >
-        <ColorModeIcon />
-      </IconButton>
-    </ClientOnly>
-  )
-})
+export const ColorModeButton = React.forwardRef<HTMLButtonElement, ColorModeButtonProps>(
+  function ColorModeButton({ iconSize = "5", isLoading, ...props }, ref) {
+    const { toggleColorMode } = useColorMode()
+
+    return (
+      <ClientOnly fallback={<Skeleton boxSize="8" />}>
+        <IconButton
+          onClick={toggleColorMode}
+          variant="ghost"
+          aria-label="Toggle color mode"
+          size="sm"
+          ref={ref}
+          {...props}
+          css={{
+            _icon: {
+              width: iconSize,
+              height: iconSize,
+            },
+          }}
+        >
+          <ColorModeIcon />
+        </IconButton>
+      </ClientOnly>
+    )
+  }
+)
 
 export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
   function LightMode(props, ref) {
@@ -90,7 +118,7 @@ export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
         {...props}
       />
     )
-  },
+  }
 )
 
 export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
@@ -106,5 +134,5 @@ export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
         {...props}
       />
     )
-  },
+  }
 )

@@ -233,7 +233,7 @@ export default function TechStack() {
                                 <Popover.Title fontWeight="medium">VSCodium</Popover.Title>
                                 <Text my="4">
                                     VSCodium is a free, open-source version of Visual Studio Code
-                                    without Microsoft's telemetry, offering a privacy-focused code
+                                    without Microsoft&apos;s telemetry, offering a privacy-focused code
                                     editor with the same features and extensions.
                                 </Text>
                             </Popover.Body>
