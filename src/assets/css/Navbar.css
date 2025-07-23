@@ -1,0 +1,83 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+/* Scrolled state wird jetzt mit pure CSS gehandelt */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Scroll-Verhalten mit CSS */
+@media (hover: hover) {
+  body:has(.navbar) {
+    scroll-padding-top: 5rem; /* Höhe der Navbar */
+  }
+
+  body.scrolled .navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.navbar h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.navbar .list-items {
+  display: flex;
+  gap: 3rem;
+}
+
+.navbar .list-items .item {
+  position: relative;
+  text-decoration: none !important;
+}
+
+.navbar .list-items .item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: var(--color);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar .list-items .item:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.navbar .burgerMenu {
+  display: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar .list-items {
+    display: none !important;
+  }
+
+  .navbar .burgerMenu {
+    display: block !important;
+  }
+}

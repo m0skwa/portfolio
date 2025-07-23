@@ -1,95 +1,88 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import "@/assets/css/Home.css";
+import { HStack, IconButton } from "@chakra-ui/react";
+import { Github, Mail } from "lucide-react";
+import { AiOutlineDiscord } from "react-icons/ai";
+
+import TerminalJsonViewer from "@/components/TerminalJsonViewer";
+import BlockQuote from "@/components/BlockQuote";
+import TechStack from "@/components/TechStack";
+import Projects from "@/components/Projects";
+import ContactArea from "../components/Contact";
+
+import useScrollAnimation from "../../hooks/useScrollAnimation";
+import jsonData from "../../data/about";
 
 export default function Home() {
+  useScrollAnimation();
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main>
+      <section className="section" id="landing">
+        <h1>m0skwa</h1>
+        <h2>Web Developer & Tech Enthusiast</h2>
+        <BlockQuote />
+        <div className="landing-buttons">
+          <IconButton
+            aria-label="Github"
+            rounded="full"
+            variant="ghost"
+            onClick={() => window.open("https://github.com/m0skwa", "_blank")}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
+            <Github />
+          </IconButton>
+          <IconButton
+            aria-label="E-Mail"
+            rounded="full"
+            variant="ghost"
+            onClick={() => window.open("mailto:m0skwa@tuta.io", "_blank")}
           >
-            Read our docs
-          </a>
+            <Mail />
+          </IconButton>
+          <IconButton
+            aria-label="Discord"
+            rounded="full"
+            variant="ghost"
+            onClick={() =>
+              window.open(
+                "https://discord.com/users/1140738196032999464",
+                "_blank"
+              )
+            }
+          >
+            <AiOutlineDiscord />
+          </IconButton>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      <section className="section" id="about">
+        <h2>About Me</h2>
+        <TerminalJsonViewer data={jsonData} />
+      </section>
+      <section className="section" id="skills">
+        <h2>My Skills and Technologies I use</h2>
+        <p>
+          My core strengths lie in the field of IT, where I bring strong
+          problem-solving skills, a deep understanding of modern technologies,
+          and a passion for continuous learning and innovation.
+        </p>
+        <HStack className="skills">
+          <TechStack />
+        </HStack>
+      </section>
+
+      <section className="section" id="projects">
+        <h2>My Projects</h2>
+        <div className="cards">
+          <Projects />
+        </div>
+      </section>
+
+      <section className="section" id="contact">
+        <h2>Contact Me</h2>
+        <div className="cards">
+          <ContactArea />
+        </div>
+      </section>
+    </main>
   );
 }

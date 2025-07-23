@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@font-face {
+  font-family: "Theo-Van-Doesburg";
+  src: url("@/assets/fonts/Theo-Van-Doesburg.ttf.woff") format("woff"),
+    url("@/assets/fonts/Theo-Van-Doesburg.ttf.svg#Theo-Van-Doesburg")
+      format("svg"),
+    url("@/assets/fonts/Theo-Van-Doesburg.ttf.eot"),
+    url("@/assets/fonts/Theo-Van-Doesburg.ttf.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Theo-Van-Doesburg";
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --color: rgba(255, 255, 255, 0.87);
+  --background: #1c1c1c;
+  background: linear-gradient(135deg, #000000 0%, #222222 100%);
+  scroll-behavior: smooth;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:not(input) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
