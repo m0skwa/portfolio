@@ -9,10 +9,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./react.svg"
+                        <Image
+                            src="/react.svg"
                             alt="React"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         React
                     </Button>
@@ -36,10 +38,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./javascript.svg"
+                        <Image
+                            src="/javascript.svg"
                             alt="Javascript"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         Javascript
                     </Button>
@@ -63,10 +67,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./php.svg"
+                        <Image
+                            src="/php.svg"
                             alt="PHP"
-                            style={{ width: "32px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         PHP
                     </Button>
@@ -91,10 +97,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./npm.svg"
+                        <Image
+                            src="/npm.svg"
                             alt="NPM"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         NPM
                     </Button>
@@ -119,10 +127,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./mysql.svg"
+                        <Image
+                            src="/mysql.svg"
                             alt="MySQL"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         MySQL
                     </Button>
@@ -147,10 +157,40 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./tux.svg"
+                        <Image
+                            src="/mongodb.svg"
+                            alt="MongoDB"
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
+                        />
+                        MongoDB
+                    </Button>
+                </Popover.Trigger>
+                <Portal>
+                    <Popover.Positioner>
+                        <Popover.Content>
+                            <Popover.Arrow />
+                            <Popover.Body>
+                                <Popover.Title fontWeight="medium">MongoDB</Popover.Title>
+                                <Text my="4">
+                                    MongoDB is an open-source document-oriented database system used to store, manage, and efficiently retrieve both structured and unstructured data with flexibility.
+                                </Text>
+                            </Popover.Body>
+                        </Popover.Content>
+                    </Popover.Positioner>
+                </Portal>
+            </Popover.Root>
+
+            <Popover.Root>
+                <Popover.Trigger asChild>
+                    <Button colorPalette="gray" variant="outline">
+                        <Image
+                            src="/tux.svg"
                             alt="Linux"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         Linux
                     </Button>
@@ -175,10 +215,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./vscodium.png"
+                        <Image
+                            src="/vscodium.png"
                             alt="VSCodium"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         VSCodium
                     </Button>
@@ -203,10 +245,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./next.svg"
+                        <Image
+                            src="/next.svg"
                             alt="NextJS"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         NextJS
                     </Button>
@@ -216,11 +260,9 @@ export default function TechStack() {
                         <Popover.Content>
                             <Popover.Arrow />
                             <Popover.Body>
-                                <Popover.Title fontWeight="medium">Vite</Popover.Title>
+                                <Popover.Title fontWeight="medium">NextJS</Popover.Title>
                                 <Text my="4">
-                                    Vite is a fast and modern build tool for frontend development,
-                                    offering instant server start and lightning-fast hot module
-                                    replacement.
+                                    Next.js is a modern React framework for frontend development that supports server-side rendering and static site generation. It offers fast page loads, optimized performance, and a seamless developer experience with automatic code splitting and hot module replacement.
                                 </Text>
                             </Popover.Body>
                         </Popover.Content>
@@ -231,10 +273,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./git.svg"
-                            alt="Git"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                        <Image
+                            src="/git.svg"
+                            alt="GIT"
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         Git
                     </Button>
@@ -259,10 +303,12 @@ export default function TechStack() {
             <Popover.Root>
                 <Popover.Trigger asChild>
                     <Button colorPalette="gray" variant="outline">
-                        <img
-                            src="./github.svg"
+                        <Image
+                            src="/github.svg"
                             alt="Github"
-                            style={{ width: "24px", height: "24px", marginRight: "8px" }}
+                            width={24}
+                            height={24}
+                            style={{ marginRight: "8px" }}
                         />
                         Github
                     </Button>
