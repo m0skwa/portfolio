@@ -63,7 +63,7 @@ export async function POST(request: Request) {
 }
 
 export async function OPTIONS(request: Request) {
-  const allowedOrigins = ["https://m0skwa.tech"];
+  const allowedOrigins = ["https://m0skwa.tech", "https://www.m0skwa.tech"];
   const origin = request.headers.get("origin") || "";
 
   const response = new NextResponse(null, {
