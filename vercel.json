@@ -1,13 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
   "functions": {
-    "api/send/*.{js,ts}": {
+    "api/send.ts": {
       "runtime": "nodejs20.x"
     }
   }
