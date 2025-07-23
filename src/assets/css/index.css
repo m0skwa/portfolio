@@ -2,10 +2,10 @@
 
 @font-face {
   font-family: "Theo-Van-Doesburg";
-  src: url("../fonts/Theo-Van-Doesburg.ttf.woff") format("woff"),
-    url("../fonts/Theo-Van-Doesburg.ttf.svg") format("svg"),
-    url("../fonts/Theo-Van-Doesburg.ttf.eot"),
-    url("../fonts/Theo-Van-Doesburg.ttf.eot?#iefix") format("embedded-opentype");
+  src: url("/fonts/Theo-Van-Doesburg.ttf.woff") format("woff"),
+    url("/fonts/Theo-Van-Doesburg.ttf.svg") format("svg"),
+    url("/fonts/Theo-Van-Doesburg.ttf.eot"),
+    url("/fonts/Theo-Van-Doesburg.ttf.eot?#iefix") format("embedded-opentype");
 }
 
 h1 {
