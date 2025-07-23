@@ -1,6 +1,7 @@
 "use client"
 
 import { Text, Popover, Portal, Button } from "@chakra-ui/react";
+import Image from "next/image";
 
 export default function TechStack() {
     return (

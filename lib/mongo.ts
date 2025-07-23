@@ -5,17 +5,14 @@ if (!uri) throw new Error("MONGODB_URI is not defined.");
 
 const options = {};
 
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
-
 declare global {
   var _mongoClientPromise: Promise<MongoClient>;
 }
 
+const client = new MongoClient(uri, options);
+const clientPromise = global._mongoClientPromise || client.connect();
 if (!global._mongoClientPromise) {
-  client = new MongoClient(uri, options);
-  global._mongoClientPromise = client.connect();
+  global._mongoClientPromise = clientPromise;
 }
-clientPromise = global._mongoClientPromise;
 
 export default clientPromise;

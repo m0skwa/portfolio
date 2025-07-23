@@ -3,7 +3,7 @@
 import { Box, Text } from "@chakra-ui/react";
 
 interface TerminalJsonViewerProps {
-    data: any;
+    data: unknown;
 }
 
 const TerminalJsonViewer: React.FC<TerminalJsonViewerProps> = ({ data }) => {

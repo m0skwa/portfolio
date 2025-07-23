@@ -13,9 +13,9 @@ export default function Projects() {
                     </Avatar.Root>
                     <Card.Title mt="2">m0skwa Portfolio</Card.Title>
                     <Card.Description>
-                        Here you’ll get to know a bit about me, my skills, and the projects
-                        I’ve worked on. Whether you're here out of curiosity or looking for
-                        collaboration, I’m glad you stopped by!
+                        Here you&apos;ll get to know a bit about me, my skills, and the projects
+                        I&apos;ve worked on. Whether you&apos;re here out of curiosity or looking for
+                        collaboration, I&apos;m glad you stopped by!
                     </Card.Description>
                 </Card.Body>
                 <Card.Footer justifyContent="flex-end">

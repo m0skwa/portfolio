@@ -1,23 +1,25 @@
 import { NextResponse } from "next/server";
 import clientPromise from "../../../../lib/mongo";
 
-// Sanitize
-function sanitize(input: any) {
-  if (typeof input !== "string") return "";
+interface RequestBody {
+  fullName: string;
+  email: string;
+  message: string;
+}
+
+function sanitize(input: string): string {
   return input.replace(/\$/g, "").replace(/\./g, "").trim();
 }
 
-// Validate
-function isValidEmail(email: string) {
+function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
 export async function POST(request: Request) {
   try {
-    const { fullName, email, message } = await request.json();
+    const { fullName, email, message } = (await request.json()) as RequestBody;
 
-    // Empty Fields
     if (!fullName || !email || !message) {
       return NextResponse.json(
         { success: false, message: "All fields are required." },
@@ -25,7 +27,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate
     if (!isValidEmail(email)) {
       return NextResponse.json(
         { success: false, message: "Invalid email address." },
