@@ -7,7 +7,7 @@
     }
   ],
   "functions": {
-    "api/*.{js,ts}": {
+    "api/send/*.{js,ts}": {
       "runtime": "nodejs20.x"
     }
   }

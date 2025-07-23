@@ -34,20 +34,17 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Connecting to MongoDB…");
-    const client = await clientPromise;
-
-    console.log("Connected. Inserting data...");
-    const db = client.db("customers");
-    const collection = db.collection("list");
-
-    const result = await collection.insertOne({
+    const sanitizedData = {
       fullName: sanitize(fullName),
       email: sanitize(email),
       message: sanitize(message),
-    });
+    };
 
-    console.log("Insert result:", result.insertedId);
+    const client = await clientPromise;
+    const db = client.db("customers");
+    const collection = db.collection("list");
+
+    const result = await collection.insertOne(sanitizedData);
 
     return NextResponse.json(
       { success: true, insertedId: result.insertedId },
@@ -59,7 +56,6 @@ export async function POST(request: Request) {
       {
         success: false,
         message: "Something went wrong. Please try again later.",
-        error: (error as Error).message, // optional, zu Debugzwecken
       },
       { status: 500 }
     );
