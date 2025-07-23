@@ -40,22 +40,28 @@ export async function POST(request: Request) {
       message: sanitize(message),
     };
 
+    console.log("[API] Connecting to MongoDB...");
     const client = await clientPromise;
+
+    console.log("[API] Connected. Inserting...");
     const db = client.db("customers");
     const collection = db.collection("list");
 
     const result = await collection.insertOne(sanitizedData);
+
+    console.log("[API] Insert successful:", result.insertedId);
 
     return NextResponse.json(
       { success: true, insertedId: result.insertedId },
       { status: 200 }
     );
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("[API ERROR]", error);
     return NextResponse.json(
       {
         success: false,
         message: "Something went wrong. Please try again later.",
+        error: (error as Error).message,
       },
       { status: 500 }
     );
