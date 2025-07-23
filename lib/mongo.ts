@@ -3,7 +3,10 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI;
 if (!uri) throw new Error("MONGODB_URI is not defined.");
 
-const options = {};
+const options = {
+  tls: true,
+  loggerLevel: "debug",
+};
 
 declare global {
   var _mongoClientPromise: Promise<MongoClient>;
