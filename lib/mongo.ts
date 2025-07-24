@@ -5,7 +5,6 @@ if (!uri) throw new Error("MONGODB_URI is not defined.");
 
 const options = {
   tls: true,
-  loggerLevel: "debug",
 };
 
 declare global {

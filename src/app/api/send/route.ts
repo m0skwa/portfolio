@@ -5,6 +5,7 @@ interface RequestBody {
   fullName: string;
   email: string;
   message: string;
+  status: string;
 }
 
 function sanitize(input: string): string {
@@ -18,7 +19,8 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: Request) {
   try {
-    const { fullName, email, message } = (await request.json()) as RequestBody;
+    const { fullName, email, message, status } =
+      (await request.json()) as RequestBody;
 
     if (!fullName || !email || !message) {
       return NextResponse.json(
@@ -38,6 +40,7 @@ export async function POST(request: Request) {
       fullName: sanitize(fullName),
       email: sanitize(email),
       message: sanitize(message),
+      status: sanitize(status),
     };
 
     console.log("[API] Connecting to MongoDB...");
@@ -69,7 +72,11 @@ export async function POST(request: Request) {
 }
 
 export async function OPTIONS(request: Request) {
-  const allowedOrigins = ["https://m0skwa.tech", "https://www.m0skwa.tech"];
+  const allowedOrigins = [
+    "https://m0skwa.tech",
+    "https://www.m0skwa.tech",
+    "http://localhost:3000",
+  ];
   const origin = request.headers.get("origin") || "";
 
   const response = new NextResponse(null, {
