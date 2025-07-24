@@ -28,7 +28,7 @@ export default function ContactArea() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ fullName, email, message }),
+                body: JSON.stringify({ fullName, email, message, status: "new" }),
             });
 
             if (response.ok) {
