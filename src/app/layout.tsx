@@ -32,13 +32,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Provider>
+        <Provider defaultTheme="dark">
           <Navbar />
           {children}
           <Toaster position="top-center" />
           <Footer />
         </Provider>
       </body>
-    </html>
+    </html >
   );
 }
